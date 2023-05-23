@@ -16,12 +16,12 @@ const PopularItems = () => {
     console.log(menu)
 
     return (
-        <div>
+        <div className='my-20'>
             <ShareTitle
             subheading="Check it out"
             headig="FROM OUR MENU"
             ></ShareTitle>
-            <div>
+            <div className="grid md:grid-cols-2 grid-cols-1 gap-10">
                 {menu.map(item => <MenuItem key={item._id} item={item}></MenuItem>)}
             </div>
         </div>
