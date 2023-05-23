@@ -8,6 +8,7 @@ const Feature = () => {
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
         backgroundSize: "cover",
+        backgroundAttachment:'fixed'
         }}
           >
         <ShareTitle subheading={"Check it out"} headig={"FROM OUR MENU"}></ShareTitle>
