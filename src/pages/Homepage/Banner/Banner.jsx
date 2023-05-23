@@ -19,7 +19,7 @@ const Banner = () => {
         showThumbs={false}
                
                >
-                <div className="hero" style={{ height: '100vh', backgroundImage: `url("${banner7}")` }}>
+                <div className="hero" style={{ height: '100vh', backgroundImage: `url("${banner5}")` }}>
                      <div className="hero-overlay bg-opacity-60 bg-black"></div>
                      <div className="hero-content text-center text-neutral-content">
     <div className="max-w-md text-white">
@@ -29,7 +29,7 @@ const Banner = () => {
     </div>
   </div>
                 </div>
-                <div className="hero" style={{ height: '100vh', backgroundImage: `url("${banner5}")` }}>
+                <div className="hero" style={{ height: '100vh', backgroundImage: `url("${banner7}")` }}>
                      <div className="hero-overlay bg-opacity-60 bg-black"></div>
                      <div className="hero-content text-center text-neutral-content">
     <div className="max-w-md text-white">
