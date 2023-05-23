@@ -4,10 +4,14 @@ import './Category.css'
 
 import "swiper/css";
 import "swiper/css/pagination";
+import ShareTitle from "../../../component/ShareTitle";
 
 const Category = () => {
     return (
-        <>
+        <div className="py-4 my-4 h-full">
+        <ShareTitle  subheading={"From 11:00am to 10:00pm"}
+        headig={"ORDER ONLINE"}>
+        </ShareTitle>
           <Swiper
         slidesPerView={3}
         spaceBetween={30}
@@ -54,7 +58,7 @@ const Category = () => {
             <h3 className="text-center text-3xl font-extralight font-serif text-white -mt-14 uppercase bg-black opacity-30">beef</h3>
         </SwiperSlide>
       </Swiper>              
-        </>
+        </div>
     );
 };
 

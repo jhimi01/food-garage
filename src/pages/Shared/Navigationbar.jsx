@@ -1,4 +1,5 @@
 import logo from '../../assets/logo.png'
+import Button from '../../component/Button';
 const Navigationbar = () => {
 
     const navoptions = <>
@@ -38,7 +39,7 @@ const Navigationbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <a className="btn">Get started</a>
+  <Button>Get Started</Button>
   </div>
 </div>   
         </>
