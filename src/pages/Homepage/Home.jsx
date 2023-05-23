@@ -1,4 +1,5 @@
 
+import Feature from "../Feature/Feature";
 import Banner from "./Banner/Banner";
 import Category from "./Category/Category";
 import MiddleSection from "./MiddleSection";
@@ -13,6 +14,7 @@ const Home = () => {
             <MiddleSection></MiddleSection>
             <PopularItems></PopularItems>
             </div>
+            <Feature></Feature>
         </div>
     );
 };
