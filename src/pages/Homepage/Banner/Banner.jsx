@@ -12,8 +12,8 @@ const Banner = () => {
         <div>
                <Carousel   
                autoPlay
-                interval={4000}
-                transitionTime={1000}
+                interval={5000}
+                transitionTime={2000}
                 infiniteLoop
                 // showStatus={false}
         showThumbs={false}
@@ -23,8 +23,8 @@ const Banner = () => {
                      <div className="hero-overlay bg-opacity-60 bg-black"></div>
                      <div className="hero-content text-center text-neutral-content">
     <div className="max-w-md text-white">
-      <h1 className="mb-5 text-6xl font-thin font-serif">Good Food</h1>
-      <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+      <h1 className="mb-5 text-6xl font-thin font-serif">Delicious  Food</h1>
+      <p className="mb-5">Welcome to our food haven, where passion meets palate, and every bite is an invitation to savor life is most delicious moments.</p>
       <button className="btn btn-primary">Get Started</button>
     </div>
   </div>

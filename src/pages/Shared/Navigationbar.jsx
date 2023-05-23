@@ -1,3 +1,4 @@
+import logo from '../../assets/logo.png'
 const Navigationbar = () => {
 
     const navoptions = <>
@@ -18,7 +19,7 @@ const Navigationbar = () => {
 
     return (
         <>
-         <div className="navbar fixed z-50 text-white">
+         <div className="navbar fixed z-50 text-white backdrop-blur-sm backdrop-brightness-100">
   <div className="navbar-start">
     <div className="dropdown">
       <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -28,7 +29,8 @@ const Navigationbar = () => {
       {navoptions}
       </ul>
     </div>
-    <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+    <a className="btn btn-ghost normal-case text-xl">
+    <img src={logo} className="h-full w-full mr-2" /></a>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
