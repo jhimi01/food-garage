@@ -8,10 +8,11 @@ import ShareTitle from "../../../component/ShareTitle";
 
 const Category = () => {
     return (
-        <div className="py-4 my-4 h-full">
+        <div className="py-4 my-5 h-full">
         <ShareTitle  subheading={"From 11:00am to 10:00pm"}
         headig={"ORDER ONLINE"}>
         </ShareTitle>
+        <div className="swiper-container h-60">
           <Swiper
         slidesPerView={3}
         spaceBetween={30}
@@ -19,7 +20,7 @@ const Category = () => {
           clickable: true,
         }}
         modules={[Pagination]}
-        className="mySwiper"
+        className="mySwiper h-40"
       >
         <SwiperSlide>
             <img src="https://images.pexels.com/photos/5253032/pexels-photo-5253032.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="food menu" />
@@ -57,7 +58,8 @@ const Category = () => {
             <img src="https://images.pexels.com/photos/2116094/pexels-photo-2116094.jpeg?auto=compress&cs=tinysrgb&w=600" />
             <h3 className="text-center text-3xl font-extralight font-serif text-white -mt-14 uppercase bg-black opacity-30">beef</h3>
         </SwiperSlide>
-      </Swiper>              
+      </Swiper>   
+      </div>           
         </div>
     );
 };
