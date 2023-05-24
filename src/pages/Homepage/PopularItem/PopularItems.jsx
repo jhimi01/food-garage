@@ -17,6 +17,7 @@ const PopularItems = () => {
     // },[])
 
     // console.log(menu)
+    
 
     return (
         <div className='my-20'>
