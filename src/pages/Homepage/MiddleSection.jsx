@@ -1,7 +1,8 @@
 
 const MiddleSection = () => {
     return (
-        <div className="hero my-7" style={{ backgroundImage: `url("https://images.unsplash.com/photo-1561758033-d89a9ad46330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDR8fHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60")` }}>
+        <div  data-aos="fade-up"
+        data-aos-duration="1000" className="hero my-7" style={{ backgroundImage: `url("https://images.unsplash.com/photo-1561758033-d89a9ad46330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDR8fHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60")` }}>
   <div className="hero-overlay bg-opacity-60"></div>
   <div className="hero-content text-center my-10 bg-white text-gray-700">
     <div className="max-w-md">
