@@ -4,9 +4,19 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import useMenu from "../../../hooks/useMenu";
 import SingleRecommands from "../../Homepage/Recommands/SingleRecommands";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
 
 const Order = () => {
+  const categories = ['drinks', 'soup', 'dessert', 'pizza', 'salad']
+  const {cetagory} = useParams();
+  const initialIndex = categories.indexOf(cetagory)
+  const [tabIndex, setTabIndex] = useState(initialIndex)
     const [menu] = useMenu();
+    console.log(cetagory)
+    console.log(cetagory)
+
+
     const drinks = menu.filter(des => des.category === "drinks");
     const soup = menu.filter(des => des.category === "soup");
     const dessert = menu.filter(des => des.category === "dessert");
@@ -17,7 +27,7 @@ const Order = () => {
         <div>
                   <Cover img={Banner} title={'Order Food'} details={'Would you like to try a dish?'}></Cover>     
                   <div>
-                  <Tabs className="w-full md:w-5/6 mx-auto">
+                  <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)} className="w-full md:w-5/6 mx-auto text-center">
     <TabList>
       <Tab>drinks</Tab>
       <Tab>soup</Tab>

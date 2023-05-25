@@ -5,6 +5,9 @@ import banner5 from '../../assets/banner5.jpg'
 import useMenu from '../../hooks/useMenu';
 import MenuItem from '../Shared/MenuItem/MenuItem';
 import ShareTitle from '../../component/ShareTitle';
+import MenuCategory from './MenuCategory/MenuCategory';
+import { Link } from 'react-router-dom';
+import Button from '../../component/Button';
 // import banner7 from '../../assets/banner7.jpg'
 // import banner6 from '../../assets/banner6.jpg'
 
@@ -30,48 +33,35 @@ const Menu = () => {
      <div className='grid md:grid-cols-2 grid-cols-1 gap-10'>
      {offered.map(item =>  <MenuItem item={item} key={item._id}></MenuItem>)}
      </div>
+     <div className="text-center my-5">
+           <Link to='/order'>
+<Button>Order now</Button>
+            </Link>
+           </div>
      </div>
 
 
      {/* soup */}
      <div className='mx-auto w-full md:w-5/6 my-10'>
-     <Cover img={banner5} title={'SOUPS'} 
-      details={"Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."}>
-      </Cover>
-     <div className='grid md:grid-cols-2 grid-cols-1 gap-10 mt-7'>
-     {soup.map(item =>  <MenuItem item={item} key={item._id}></MenuItem>)}
-     </div>
-
+     <MenuCategory item={soup} img={banner5} title={'soup'} details={"Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."}></MenuCategory>
      {/* dessert */}
      </div>
      <div className='mx-auto w-full md:w-5/6 my-10'>
-     <Cover img={banner5} title={'DESSERTS'} 
-      details={"Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."}>
-      </Cover>
-     <div className='grid md:grid-cols-2 grid-cols-1 gap-10 mt-7'>
-     {dessert.map(item =>  <MenuItem item={item} key={item._id}></MenuItem>)}
-     </div>
+    
+     <MenuCategory item={dessert} img={banner5} title={'dessert'} details={"Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."}></MenuCategory>
      </div>
 
      {/* pizza */}
      <div className='mx-auto w-full md:w-5/6 my-10'>
-     <Cover img={banner5} title={'PIZZA'} 
-      details={"Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."}>
-      </Cover>
-     <div className='grid md:grid-cols-2 grid-cols-1 gap-10 mt-7'>
-     {pizza.map(item =>  <MenuItem item={item} key={item._id}></MenuItem>)}
-     </div>
+    
+     <MenuCategory item={pizza} img={banner5} title={'pizza'} details={"Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."}></MenuCategory>
      </div>
 
 
      {/* salad */}
      <div className='mx-auto w-full md:w-5/6 my-10'>
-     <Cover img={banner5} title={'SALADS'} 
-      details={"Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."}>
-      </Cover>
-     <div className='grid md:grid-cols-2 grid-cols-1 gap-10 mt-7'>
-     {salad.map(item =>  <MenuItem item={item} key={item._id}></MenuItem>)}
-     </div>
+    
+     <MenuCategory item={salad} img={banner5} title={'salad'} details={"Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."}></MenuCategory>
      </div>
 
 

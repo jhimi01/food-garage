@@ -26,7 +26,7 @@ const router = createBrowserRouter([
         element:<Menu></Menu>
       },
       {
-        path: 'order',
+        path: '/order/:cetagory',
         element: <Order></Order>
       }
     ]
