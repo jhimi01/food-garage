@@ -11,7 +11,7 @@ const SingleRecommands = ({item}) => {
        <h2 className="card-title">{item.name}</h2>
        <p className="my-2">{item.recipe}</p>
        <div className="card-actions">
-         <button style={{borderRadius:0, border:'1px solid black'}} className="btn  hover:text-black font-bold hover:bg-white bg-black text-white">Buy Now</button>
+         <button style={{borderRadius:0, border:'1px solid black'}} className="btn  hover:text-black font-bold hover:bg-white bg-black text-white">Order now</button>
        </div>
      </div>
    </div>
