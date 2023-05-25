@@ -3,9 +3,16 @@ import Banner from "../../../assets/banner5.jpg";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import useMenu from "../../../hooks/useMenu";
-import SingleRecommands from "../../Homepage/Recommands/SingleRecommands";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+
+import OrderTab from "./OrderTab";
+
+
+
+
+
+
 
 const Order = () => {
   const categories = ['drinks', 'soup', 'dessert', 'pizza', 'salad']
@@ -13,8 +20,6 @@ const Order = () => {
   const initialIndex = categories.indexOf(cetagory)
   const [tabIndex, setTabIndex] = useState(initialIndex)
     const [menu] = useMenu();
-    console.log(cetagory)
-    console.log(cetagory)
 
 
     const drinks = menu.filter(des => des.category === "drinks");
@@ -37,29 +42,19 @@ const Order = () => {
     </TabList>
 
     <TabPanel >
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-      {drinks.map(item => <SingleRecommands item={item} key={item._id}></SingleRecommands>)}
-    </div>
+    <OrderTab food={drinks}></OrderTab>
     </TabPanel>
     <TabPanel>
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-      {soup.map(item => <SingleRecommands item={item} key={item._id}></SingleRecommands>)}
-    </div>
+      <OrderTab food={soup}></OrderTab>
     </TabPanel>
     <TabPanel>
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-      {dessert.map(item => <SingleRecommands item={item} key={item._id}></SingleRecommands>)}
-    </div>
+    <OrderTab food={dessert}></OrderTab>
     </TabPanel>
     <TabPanel>
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-      {pizza.map(item => <SingleRecommands item={item} key={item._id}></SingleRecommands>)}
-    </div>
+    <OrderTab food={pizza}></OrderTab>
     </TabPanel>
     <TabPanel>
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-      {salad.map(item => <SingleRecommands item={item} key={item._id}></SingleRecommands>)}
-    </div>
+    <OrderTab food={salad}></OrderTab>
     </TabPanel>
   </Tabs>
                   </div>
