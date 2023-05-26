@@ -11,6 +11,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import Menu from './pages/Menu/Menu';
 import Order from './pages/Order/Order/Order';
 import Login from './pages/Login/Login';
+import AuthProvider from './provider/AuthProvider';
 
 
 const router = createBrowserRouter([
@@ -39,8 +40,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-  <HelmetProvider>
+ <AuthProvider>
+ <HelmetProvider>
      <RouterProvider router={router} />
   </HelmetProvider>
+ </AuthProvider>
   </React.StrictMode>,
 )
