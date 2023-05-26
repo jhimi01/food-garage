@@ -1,7 +1,16 @@
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.png'
 import Button from '../../component/Button';
+import { useContext } from 'react';
+import { AuthContext } from '../../provider/AuthProvider';
 const Navigationbar = () => {
+
+  const { user, logOut } = useContext(AuthContext)
+
+  const handleLogOut =()=>{
+    logOut()
+    .then(()=>{}).catch(error => console.log(error.message))
+  }
 
     const navoptions = <>
         <li className='bg-black hover:opacity-75'><Link to='/'>Home</Link></li>
@@ -9,8 +18,15 @@ const Navigationbar = () => {
         <li className='bg-black hover:opacity-75'><Link to='/order'>Our Shop</Link></li>
         <li className='bg-black hover:opacity-75'><Link to='/contact'>CONTACT US</Link></li>
         <li className='bg-black hover:opacity-75'><Link to='/dashboard'>DASHBOARD</Link></li>
-        <li className='bg-black hover:opacity-75'><Link to='/login'>Login</Link></li>
+        {
+          user ? <>
+          <li onClick={handleLogOut} className='bg-black hover:opacity-75'><Link>logOut</Link></li>
+          </>:<>
+          <li className='bg-black hover:opacity-75'><Link to='/login'>Login</Link></li>
+          </>
+        }
     </>
+
     
 
     return (

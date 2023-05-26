@@ -1,10 +1,13 @@
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { AuthContext } from '../../provider/AuthProvider';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
+import Swal from 'sweetalert2';
+
 const Login = () => {
   const [disabled, setDisabled] = useState(true)
-  const cpachaRef = useRef(null)
+
 
   const { signIn } = useContext(AuthContext)
 
@@ -24,15 +27,15 @@ signIn(email, password)
 .then(result => {
    const user = result.user;
    console.log(user)
+ Swal.fire('successfully logged in')
 }).catch(error => {
   console.log(error.message)
 })
     }
 
-    const handleValidatCapcha =()=>{
-      const value = cpachaRef.current.value;
-      console.log(value)
-      if (validateCaptcha(value)==true) {
+    const handleValidateCaptcha =(e)=>{
+      const user_captcha_value = e.target.value;
+      if (validateCaptcha(user_captcha_value)===true) {
        
         setDisabled(false)
     }
@@ -45,7 +48,11 @@ signIn(email, password)
 
 
     return (
-        <div className="hero min-h-screen bg-base-200">
+      <>
+       <Helmet>
+    <title>Food Garage | Login</title>
+   </Helmet>
+          <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left">
             <h1 className="text-5xl font-bold">Login now!</h1>
@@ -59,21 +66,26 @@ signIn(email, password)
                 </label>
                 <input type="text" placeholder="email" name="email" className="input input-bordered" />
               </div>
+
+
               <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Password</span>
-                </label>
-                <input type="text" placeholder="password" name="password" className="input input-bordered" />
-                <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                </label>
-              </div>
+  <label className="label">
+    <span className="label-text">Password</span>
+  </label>
+  <input type="password" placeholder="password" name="password" className="input input-bordered" />
+  <label className="label">
+    <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+  </label>
+</div>
+
+
+
               <div className="form-control">
                 <label className="label">
                 <LoadCanvasTemplate />
                 </label>
-                <input ref={cpachaRef} type="text" placeholder="type the capcha" name="password" className="input input-bordered" />
-                <button onClick={handleValidatCapcha} className='btn btn-outline btn-xs mt-2'>validatie</button>
+                <input  onBlur={handleValidateCaptcha} type="text" placeholder="type the capcha" name="capcha" className="input input-bordered" />
+                {/* <button onClick={handleValidateCaptcha} className='btn btn-outline btn-xs mt-2'>validatie</button> */}
               </div>
               <div className="form-control mt-6">
                
@@ -84,6 +96,7 @@ signIn(email, password)
           </div>
         </div>
       </div>
+      </>
     );
 };
 
