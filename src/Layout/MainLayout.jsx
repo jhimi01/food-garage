@@ -6,7 +6,7 @@ const MainLayout = () => {
 
     const location = useLocation();
     console.log(location.pathname)
-    const noHeader = location.pathname === '/login';
+    const noHeader = location.pathname === '/login' || location.pathname === '/signup';
     return (
         <div>
           {noHeader || <Navigationbar></Navigationbar>}
