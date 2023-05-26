@@ -5,22 +5,16 @@ import { AuthContext } from "../../provider/AuthProvider";
 import { Link } from "react-router-dom";
 
 const SignUp = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, handleSubmit,  formState: { errors } } = useForm();
   const {createUser}= useContext(AuthContext)
   const onSubmit = data => {
     createUser(data.email, data.password)
-    .then(result=> 
-      {
-        console.log(result.user)
-        data.email='';
-
-        data.password='';
-      }
-    
-    )
-    .catch(error => console.log(error))
-    console.log(data)
+      .then(result => {
+        console.log(result.user);
+      })
+      .catch(error => console.log(error));
   };
+  
   return (
    <>
    <Helmet>
@@ -47,6 +41,13 @@ const SignUp = () => {
               </label>
               <input {...register("email", { required: true })} type="text" placeholder="email" className="input input-bordered" />
               {errors.email && <span className="text-red-500 text-sm">This field is required</span>}
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Photo Url</span>
+              </label>
+              <input {...register("url", { required: true })} type="url" placeholder="photo url" className="input input-bordered" />
+              {errors.url && <span className="text-red-500 text-sm">This field is required</span>}
             </div>
             <div className="form-control">
               <label className="label">
