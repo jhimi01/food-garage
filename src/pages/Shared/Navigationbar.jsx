@@ -3,6 +3,7 @@ import logo from '../../assets/logo.png'
 import Button from '../../component/Button';
 import { useContext } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
+import { FaShoppingCart } from 'react-icons/fa';
 const Navigationbar = () => {
 
   const { user, logOut } = useContext(AuthContext)
@@ -16,8 +17,10 @@ const Navigationbar = () => {
         <li className='bg-black hover:opacity-75'><Link to='/'>Home</Link></li>
         <li className='bg-black hover:opacity-75'><Link to='/menu'>Our Menu</Link></li>
         <li className='bg-black hover:opacity-75'><Link to='/order'>Our Shop</Link></li>
-        <li className='bg-black hover:opacity-75'><Link to='/contact'>CONTACT US</Link></li>
-        <li className='bg-black hover:opacity-75'><Link to='/dashboard'>DASHBOARD</Link></li>
+        {/* <li className='bg-black hover:opacity-75'><Link to='/contact'>CONTACT US</Link></li> */}
+        {/* <li className='bg-black hover:opacity-75'><Link to='/dashboard'>DASHBOARD</Link></li> */}
+        <Link to='/'><li className='bg-base-200 hover:opacity-75 text-black'><button className=""><FaShoppingCart /><div className="badge badge-secondary">+0</div></button></li>
+        </Link>
         {
           user ? <>
           <li onClick={handleLogOut} className='bg-black hover:opacity-75'><Link>logOut</Link></li>
