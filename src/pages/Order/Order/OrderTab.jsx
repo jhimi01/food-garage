@@ -27,7 +27,7 @@ const OrderTab = ({food}) => {
         className="mySwiper"
       >
         <SwiperSlide>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 py-3 bg-base-100 gap-5">
       {food.map(item => <SingleRecommands item={item} key={item._id}></SingleRecommands>)}
 
     </div>

@@ -4,17 +4,19 @@ import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
 const SingleRecommands = ({ item }) => {
+  const { name, image,  recipe, price, _id } = item;
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleItem = (item) => {
-    if (user) {
-      fetch("http://localhost:5000/cart", {
+    if (user && user.email) {
+      const orderItem =  { foodId: _id, name, price, recipe, image, email: user.email}
+      fetch("http://localhost:5000/carts", {
         method: "POST",
         headers: {
           "content-type": "application/json",
         },
-        body: JSON.stringify(item),
+        body: JSON.stringify(orderItem),
       })
         .then((res) => res.json())
         .then((data) => {
@@ -52,12 +54,13 @@ const SingleRecommands = ({ item }) => {
       data-aos-duration="2000"
       className="card w-full bg-base-100 shadow-xl"
     >
-      <figure className="px-10 pt-10">
-        <img src={item.image} alt="Shoes" className="rounded-xl" />
+      <figure className="px-5 pt-5">
+        <img src={image} alt="Shoes" className="rounded-xl" />
       </figure>
       <div className="card-body items-center text-center">
-        <h2 className="card-title">{item.name}</h2>
-        <p className="my-2">{item.recipe}</p>
+        <h2 className="card-title">{name}</h2>
+        <p className="my-1">{recipe}</p>
+        <p className="text-gray-600">price: ${price}</p>
         <div className="card-actions">
           <button
             onClick={() => handleItem(item)}
