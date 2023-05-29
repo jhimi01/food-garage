@@ -4,9 +4,12 @@ import Button from '../../component/Button';
 import { useContext } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
 import { FaShoppingCart } from 'react-icons/fa';
+import useCart from '../../hooks/useCart';
 const Navigationbar = () => {
 
   const { user, logOut } = useContext(AuthContext)
+  const [cart] = useCart()
+  console.log(cart)
 
   const handleLogOut =()=>{
     logOut()
@@ -19,7 +22,7 @@ const Navigationbar = () => {
         <li className='bg-black hover:opacity-75'><Link to='/order/salad'>Order</Link></li>
         {/* <li className='bg-black hover:opacity-75'><Link to='/contact'>CONTACT US</Link></li> */}
         {/* <li className='bg-black hover:opacity-75'><Link to='/dashboard'>DASHBOARD</Link></li> */}
-        <Link to='/'><li className='bg-base-200 hover:opacity-75 text-black'><button className=""><FaShoppingCart /><div className="badge badge-secondary">+0</div></button></li>
+        <Link to='/dashboard/mycart'><li className='bg-base-200 hover:opacity-75 text-black'><button className=""><FaShoppingCart /><div className="badge badge-secondary">+{cart?.length || 0}</div></button></li>
         </Link>
         {
           user ? <>

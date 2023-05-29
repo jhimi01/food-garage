@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.drawer-side li a{
+    color: #000000;
+    background: none;
+}
+.drawer-side li a.active{
+    /* color: #000000; */
+    background: #fff;
+}
