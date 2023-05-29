@@ -1,5 +1,5 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { BsFillCartFill } from "react-icons/bs";
+import { BsFillCartFill, BsFillMenuButtonWideFill } from "react-icons/bs";
 import { GiWallet } from "react-icons/gi";
 import { BsFillCalendarWeekFill } from "react-icons/bs";
 import { AiFillHome } from "react-icons/ai";
@@ -7,10 +7,14 @@ import { GiHotMeal } from "react-icons/gi";
 import { BiMenu } from "react-icons/bi";
 import { AiFillContacts } from "react-icons/ai";
 import useCart from "../hooks/useCart";
+import { FaBook, FaUsers, FaUtensils } from "react-icons/fa";
 
 const Dashboard = () => {
 
     const [cart, refetch] = useCart();
+
+    const isAdmin = true;
+
 
   return (
     <div className="drawer drawer-mobile">
@@ -28,8 +32,38 @@ const Dashboard = () => {
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
         <ul className="menu p-4 w-80 bg-base-300 text-base-content">
-          {/* <!-- Sidebar content here --> */}
+
+        { isAdmin ? <>
           <li>
+            <NavLink  className={({ isActive }) => isActive ? "active" : ""} to='/userhome'>
+              <AiFillHome />
+              Admin Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink  className={({ isActive }) => isActive ? "active" : ""} to="/dashboard/mycart">
+              <FaUtensils /> ADD ITEMS
+              <div className="badge badge-secondary">+{cart?.length || 0}</div>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink  className={({ isActive }) => isActive ? "active" : ""} to='payment'>
+              <BsFillMenuButtonWideFill /> MANAGE ITEMS
+            </NavLink>
+          </li>
+          <li>
+            <NavLink  className={({ isActive }) => isActive ? "active" : ""} to='payment'>
+              <FaBook /> MANAGE BOOKING
+            </NavLink>
+          </li>
+          <li>
+            <NavLink  className={({ isActive }) => isActive ? "active" : ""} to='/dashboard/allusers'>
+              <FaUsers /> ALL USERS
+            </NavLink>
+          </li>
+          
+        </> : <>
+        <li>
             <NavLink  className={({ isActive }) => isActive ? "active" : ""} to='/userhome'>
               <AiFillHome />
               User Home
@@ -51,6 +85,10 @@ const Dashboard = () => {
               <BsFillCalendarWeekFill /> Reservation
             </NavLink>
           </li>
+          <div className="divider"></div>
+          
+        </>}
+       
           <div className="divider"></div>
           <li>
             <NavLink  className={({ isActive }) => isActive ? "active" : ""} to="/">
@@ -76,6 +114,8 @@ const Dashboard = () => {
               Contact
             </NavLink>
           </li>
+          {/* <!-- Sidebar content here --> */}
+        
         </ul>
       </div>
     </div>
