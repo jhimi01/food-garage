@@ -8,12 +8,15 @@ import { BiMenu } from "react-icons/bi";
 import { AiFillContacts } from "react-icons/ai";
 import useCart from "../hooks/useCart";
 import { FaBook, FaUsers, FaUtensils } from "react-icons/fa";
+import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
 
-    const [cart, refetch] = useCart();
+    const [cart] = useCart();
 
-    const isAdmin = true;
+    // const isAdmin = true;
+    const [isAdmin] = useAdmin();
+    console.log(isAdmin)
 
 
   return (
