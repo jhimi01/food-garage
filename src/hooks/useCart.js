@@ -20,7 +20,7 @@ const useCart = () => {
     // },
     queryFn: async ()=>{
         const response = await axiosSecure(`/carts?email=${user?.email}`)
-        console.log('res from axios secure', response)
+        // console.log('res from axios secure', response)
         return response.data;
     },
   })
