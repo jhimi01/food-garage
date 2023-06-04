@@ -18,6 +18,8 @@ import Mycart from './pages/Dashboard/MyCart/Mycart';
 import Dashboard from './Layout/Dashboard';
 import PrivateRoute from './route/PrivateRoute';
 import Alluser from './Layout/AllUsers/Alluser';
+import AddItem from './pages/Dashboard/AddItem/AddItem';
+import AdminRoute from './route/AdminRoute';
 const queryClient = new QueryClient()
 
 
@@ -57,6 +59,9 @@ const router = createBrowserRouter([
      {
       path: 'allusers',
       element: <Alluser></Alluser>
+     },{
+      path: 'additems',
+      element: <AdminRoute><AddItem></AddItem></AdminRoute>
      }
     ]
   }

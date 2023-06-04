@@ -44,7 +44,7 @@ const Dashboard = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink  className={({ isActive }) => isActive ? "active" : ""} to="/dashboard/mycart">
+            <NavLink  className={({ isActive }) => isActive ? "active" : ""} to="/dashboard/additems">
               <FaUtensils /> ADD ITEMS
               <div className="badge badge-secondary">+{cart?.length || 0}</div>
             </NavLink>
