@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 import useCart from "../../../hooks/useCart";
 import { BsTrashFill } from "react-icons/bs";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 
 const Mycart = () => {
@@ -49,7 +50,7 @@ const Mycart = () => {
           <h2 className="text-3xl text-semibold">Total Item: {cart.length}</h2>
            
            <h2 className="text-3xl text-semibold">Total Price: ${totalPrice}</h2>
-           <button className="btn btn-sm">PAY</button>
+           <Link to='/dashboard/payment'><button className="btn btn-sm">PAY</button></Link>
            
           </div>
           <div className="overflow-x-auto w-full">

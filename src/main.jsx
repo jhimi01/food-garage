@@ -21,6 +21,7 @@ import Alluser from './Layout/AllUsers/Alluser';
 import AddItem from './pages/Dashboard/AddItem/AddItem';
 import AdminRoute from './route/AdminRoute';
 import ManageItem from './pages/Dashboard/ManageItems/ManageItem';
+import Payment from './pages/Dashboard/Payment/Payment';
 const queryClient = new QueryClient()
 
 
@@ -66,6 +67,9 @@ const router = createBrowserRouter([
      },{
       path: 'manageitems',
       element:<AdminRoute><ManageItem></ManageItem></AdminRoute>
+     },{
+      path: '/dashboard/payment',
+      element: <Payment></Payment>
      }
     ]
   }
