@@ -20,6 +20,7 @@ import PrivateRoute from './route/PrivateRoute';
 import Alluser from './Layout/AllUsers/Alluser';
 import AddItem from './pages/Dashboard/AddItem/AddItem';
 import AdminRoute from './route/AdminRoute';
+import ManageItem from './pages/Dashboard/ManageItems/ManageItem';
 const queryClient = new QueryClient()
 
 
@@ -62,6 +63,9 @@ const router = createBrowserRouter([
      },{
       path: 'additems',
       element: <AdminRoute><AddItem></AddItem></AdminRoute>
+     },{
+      path: 'manageitems',
+      element:<AdminRoute><ManageItem></ManageItem></AdminRoute>
      }
     ]
   }

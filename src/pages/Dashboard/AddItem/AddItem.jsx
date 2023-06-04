@@ -1,13 +1,17 @@
 import ShareTitle from "../../../component/ShareTitle";
 import { useForm } from 'react-hook-form';
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const img_hosting_token = import.meta.env.VITE_IMAGE_KEY;
 
 const AddItem = () => {
-    console.log(img_hosting_token)
+
+    const[axiosSecure]= useAxiosSecure()
 
     const img_hosing_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`
-    const { register, handleSubmit, formState: { errors } } = useForm();
+
+    const { register, handleSubmit, reset} = useForm();
 
 
   const onSubmit = data => {
@@ -27,6 +31,20 @@ const AddItem = () => {
             const {name, price, category, recipe} = data;
             const newItem = {name, price:parseFloat(price), category, recipe, image: imgURL};
             console.log(newItem)
+            axiosSecure.post('/menu', newItem)
+            .then(data => {
+                console.log('after processing data', data.data)
+                if (data.data.insertedId) {
+                    reset()
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Your work has been saved',
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
+                }
+            })
         }
       })
       .catch((error) => {
@@ -36,8 +54,6 @@ const AddItem = () => {
     //   console.log(data)
 };
 
-
-console.log(errors)
     return (
         <div className="w-full px-10">
             <ShareTitle subheading={"What is new"}
@@ -62,7 +78,6 @@ console.log(errors)
                             <option>Soup</option>
                             <option>Salad</option>
                             <option>Dessert</option>
-                            <option>Desi</option>
                             <option>Drinks</option>
                         </select>
                     </div>

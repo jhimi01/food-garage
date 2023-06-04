@@ -16,7 +16,7 @@ const Dashboard = () => {
 
     // const isAdmin = true;
     const [isAdmin] = useAdmin();
-    console.log(isAdmin)
+    // console.log(isAdmin)
 
 
   return (
@@ -50,7 +50,7 @@ const Dashboard = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink  className={({ isActive }) => isActive ? "active" : ""} to='payment'>
+            <NavLink  className={({ isActive }) => isActive ? "active" : ""} to='/dashboard/manageitems'>
               <BsFillMenuButtonWideFill /> MANAGE ITEMS
             </NavLink>
           </li>
