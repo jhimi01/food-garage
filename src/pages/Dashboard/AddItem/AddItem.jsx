@@ -1,12 +1,42 @@
 import ShareTitle from "../../../component/ShareTitle";
 import { useForm } from 'react-hook-form';
 
+const img_hosting_token = import.meta.env.VITE_IMAGE_KEY;
 
 const AddItem = () => {
+    console.log(img_hosting_token)
+
+    const img_hosing_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`
     const { register, handleSubmit, formState: { errors } } = useForm();
+
+
   const onSubmit = data => {
-    console.log(data)
+    const formData = new FormData();
+    formData.append('image', data.image[0]);
+
+    
+    fetch(img_hosing_url, {
+      method: 'POST',
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        // Handle the response here
+        if (result.success) {
+            const imgURL = result.data.display_url;
+            const {name, price, category, recipe} = data;
+            const newItem = {name, price:parseFloat(price), category, recipe, image: imgURL};
+            console.log(newItem)
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+      
+    //   console.log(data)
 };
+
+
 console.log(errors)
     return (
         <div className="w-full px-10">
