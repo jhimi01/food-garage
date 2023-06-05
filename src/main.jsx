@@ -22,6 +22,8 @@ import AddItem from './pages/Dashboard/AddItem/AddItem';
 import AdminRoute from './route/AdminRoute';
 import ManageItem from './pages/Dashboard/ManageItems/ManageItem';
 import Payment from './pages/Dashboard/Payment/Payment';
+import UserHome from './pages/Dashboard/UserHome/UserHome';
+import Adminhome from './pages/Dashboard/AdminHome/Adminhome';
 const queryClient = new QueryClient()
 
 
@@ -54,6 +56,14 @@ const router = createBrowserRouter([
     path:'/dashboard',
     element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     children: [
+      {
+        path: 'userhome',
+        element: <UserHome></UserHome>
+      },
+      {
+        path: 'adminhome',
+        element: <AdminRoute><Adminhome></Adminhome></AdminRoute>
+      },
      {
       path: 'mycart',
       element: <Mycart></Mycart>

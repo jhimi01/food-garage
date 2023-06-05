@@ -5,11 +5,14 @@ import { useContext } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
 import { FaShoppingCart } from 'react-icons/fa';
 import useCart from '../../hooks/useCart';
+import useAdmin from '../../hooks/useAdmin';
 const Navigationbar = () => {
 
   const { user, logOut } = useContext(AuthContext)
   const [cart] = useCart()
   console.log(cart)
+  const [isAdmin]= useAdmin()
+  // console.log(isAdmin)
 
   const handleLogOut =()=>{
     logOut()
@@ -20,8 +23,7 @@ const Navigationbar = () => {
         <li className='bg-black hover:opacity-75'><Link to='/'>Home</Link></li>
         <li className='bg-black hover:opacity-75'><Link to='/menu'>Our Menu</Link></li>
         <li className='bg-black hover:opacity-75'><Link to='/order/salad'>Order</Link></li>
-        {/* <li className='bg-black hover:opacity-75'><Link to='/contact'>CONTACT US</Link></li> */}
-        {/* <li className='bg-black hover:opacity-75'><Link to='/dashboard'>DASHBOARD</Link></li> */}
+        <li className='bg-black hover:opacity-75'><Link  to= { isAdmin? '/dashboard/adminhome' : '/dashboard/userhome'}>Dashboard</Link></li>
         <Link to='/dashboard/mycart'><li className='bg-base-200 hover:opacity-75 text-black'><button className=""><FaShoppingCart /><div className="badge badge-secondary">+{cart?.length || 0}</div></button></li>
         </Link>
         {

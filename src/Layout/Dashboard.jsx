@@ -38,7 +38,7 @@ const Dashboard = () => {
 
         { isAdmin ? <>
           <li>
-            <NavLink  className={({ isActive }) => isActive ? "active" : ""} to='/userhome'>
+            <NavLink  className={({ isActive }) => isActive ? "active" : ""} to='/dashboard/adminhome'>
               <AiFillHome />
               Admin Home
             </NavLink>
@@ -67,7 +67,7 @@ const Dashboard = () => {
           
         </> : <>
         <li>
-            <NavLink  className={({ isActive }) => isActive ? "active" : ""} to='/userhome'>
+            <NavLink  className={({ isActive }) => isActive ? "active" : ""} to='/dashboard/userhome'>
               <AiFillHome />
               User Home
             </NavLink>
