@@ -14,7 +14,7 @@ const Payment = () => {
             <ShareTitle subheading={'Please Provide'} headig={'pAYMENT'}/>
             <div>
             <Elements stripe={stripePromise}>
-            <Checkoutform price={price}></Checkoutform>
+            <Checkoutform cart={cart} price={price}></Checkoutform>
     </Elements>
             
             </div>

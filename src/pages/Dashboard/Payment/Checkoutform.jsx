@@ -3,21 +3,27 @@ import { useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useEffect } from "react";
 import useAuth from "../../../hooks/useAuth";
+import Swal from "sweetalert2";
+// import './CheckoutForm.css'
 
-const Checkoutform = ({ price }) => {
+const Checkoutform = ({ price, cart }) => {
   const [cardError, setCardError] = useState("");
   const stripe = useStripe();
   const elements = useElements();
   const [axiosSecure] = useAxiosSecure();
   const [clientSecret, setClientSecret] = useState("");
+  const [processing, setProcessing] = useState(false);
+  const [transactionId, setTransactionId] = useState('')
   const {user} =useAuth()
 
   useEffect(() => {
+   if (price > 0) {
     axiosSecure.post("/create-payment-intent", { price }).then((res) => {
       console.log(res.data.clientSecret);
       setClientSecret(res.data.clientSecret);
     });
-  }, [price, axiosSecure]);
+   }
+  }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -45,6 +51,9 @@ const Checkoutform = ({ price }) => {
       console.log("[PaymentMethod]", paymentMethod);
       setCardError("");
     }
+
+    setProcessing(true)
+
    const {paymentIntent, error:confirmError} = await  stripe.confirmCardPayment(clientSecret, {
       payment_method: {
         card: card,
@@ -59,6 +68,29 @@ const Checkoutform = ({ price }) => {
       setCardError(confirmError)
     }
     console.log(paymentIntent)
+    setProcessing(false)
+
+    if(paymentIntent.status === "succeeded"){
+      setTransactionId(paymentIntent.id)
+     const payment = {
+      email: user?.email,
+      transactionId : paymentIntent.id,
+      price,
+      date: new Date(),
+      quantity : cart.length,
+      cartItems: cart.map(item => item._id),
+      menuItems: cart.map(item => item.foodId),
+      status: 'service pending',
+      itemName: cart.map(item => item.name),
+     }
+     axiosSecure.post('/payment', payment)
+     .then(res => {
+      console.log(res.data)
+      if (res.data.result.insertedId) {     
+         Swal.fire('inserted')
+      }
+     })
+    }
   };
 
   return (
@@ -83,12 +115,13 @@ const Checkoutform = ({ price }) => {
         <button
           className="btn btn-active"
           type="submit"
-          disabled={!stripe || !clientSecret}
+          disabled={!stripe || !clientSecret || processing}
         >
           Pay
         </button>
       </form>
       {cardError && <p className="text-red-600">{cardError}</p>}
+      {transactionId && <p className="text-green-600">transected succefully with {transactionId}</p>}
     </>
   );
 };
